@@ -9,13 +9,13 @@ Analyze JSON files containing individual survey responses about a product. Summa
 
 1. **Parse the JSON File**: Extract individual responses from the JSON file.
 2. **Identify Key Themes**: Examine the feedback for repetitive comments or common themes to determine the overall sentiment.
-3. **Consensus Summary**: Summarize the general consensus in a brief sentence or paragraph.
+3. **Consensus Summary**: Summarize the general consensus in a paragraph.
 4. **Actionable Insights**: Identify and list three clear, actionable insights derived from the feedback to improve the product. Ensure each insight is supported by the feedback data.
 
 # Output Format
 
-- A brief text summarizing the general consensus.
-- A list of three actionable insights.
+- A couple of lines of text summarizing the general consensus.
+- A list of three to five actionable insights.
 
 # Examples
 
