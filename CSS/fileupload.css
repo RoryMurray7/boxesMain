@@ -1,0 +1,34 @@
+.container {
+    margin: auto;
+    margin-top: 0;
+    width: 60%;
+    height: 80vh; /* Makes the container take 80% of the page height */
+    padding: 20px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Ensures children (textarea, buttons) stack vertically */
+    gap: 10px; /* Adds spacing between child elements */
+    box-sizing: border-box; /* Ensures padding is included in height/width */
+}
+
+textarea {
+    flex-grow: 1; /* Makes the textarea take up the remaining space */
+    margin: auto 0; /* Adjusts margins for alignment */
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: none;
+    box-sizing: border-box; /* Ensures padding is included in height/width */
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
