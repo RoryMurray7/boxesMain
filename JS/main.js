@@ -1,8 +1,8 @@
 const fileInput = document.getElementById("fileInput");
-const processFileButton = document.getElementById("processFile");
+const submitButton = document.getElementById("submit");
 const responseBox = document.getElementById("responseBox");
 
-processFileButton.addEventListener("click", async () => {
+submitButton.addEventListener("click", async () => {
   const file = fileInput.files[0];
 
   if (!file) {
