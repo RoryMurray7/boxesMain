@@ -14,16 +14,19 @@
     box-sizing: border-box; /* Ensures padding is included in height/width */
 }
 
-textarea {
-    flex-grow: 1; /* Makes the textarea take up the remaining space */
+#responseBox {
+    flex-grow: 1; /* Makes the div take up the remaining space */
     margin: auto 0; /* Adjusts margins for alignment */
-    padding: 10px;
-    font-size: 20px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    resize: none;
+    padding: 10px; /* Adds padding inside the div */
+    font-size: 20px; /* Font size for text inside the div */
+    border: 1px solid #ccc; /* Border similar to a textarea */
+    border-radius: 6px; /* Rounded corners */
     box-sizing: border-box; /* Ensures padding is included in height/width */
+    background-color: #fff; /* Optional: white background like a textarea */
+    min-height: 100px; /* Prevents the div from collapsing when empty */
+    overflow-y: auto; /* Enables scrolling if content overflows */
 }
+
 
 button {
     padding: 10px 20px;

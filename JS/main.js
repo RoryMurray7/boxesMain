@@ -39,9 +39,20 @@ The general consensus is that while the design is appreciated, the product's bat
 
 - Ensure the insights are directly actionable and relevant to product improvement.
 - Maintain objectivity and avoid drawing unsupported conclusions based only on a couple of responses.
+- use markup
 `;
 
-console.log(prompt);
+// A basic Markdown parser function
+function parseMarkdown(text) {
+  // Convert Markdown to HTML:
+  text = text.replace(/(\*\*|__)(.*?)\1/g, "<strong>$2</strong>"); // Bold
+  text = text.replace(/(\*|_)(.*?)\1/g, "<em>$2</em>"); // Italics
+  text = text.replace(/^### (.*?)$/gm, "<h3>$1</h3>"); // H3
+  text = text.replace(/^## (.*?)$/gm, "<h2>$1</h2>"); // H2
+  text = text.replace(/^# (.*?)$/gm, "<h1>$1</h1>"); // H1
+  text = text.replace(/\n/g, "<br>"); // Line breaks
+  return text;
+}
 
 submitButton.addEventListener("click", async () => {
   const file = fileInput.files[0];
@@ -81,9 +92,12 @@ submitButton.addEventListener("click", async () => {
 
       const data = await response.json();
       const openAiResponse = data.choices[0].message.content;
-      responseBox.value = openAiResponse;
+
+      // Parse Markdown and render as HTML
+      const openAiResponseHtml = parseMarkdown(openAiResponse);
+      responseBox.innerHTML = openAiResponseHtml; // Display as HTML
     } catch (error) {
-      responseBox.value = `Error: ${error.message}`;
+      responseBox.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
     }
   };
 

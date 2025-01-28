@@ -1,27 +1,28 @@
+const systemMessage = `
 Analyze JSON files containing individual survey responses about a product. Summarize the overall consensus of the feedback and provide three actionable insights for product improvement.
 
 # Steps
 
 1. **Parse the JSON File**: Extract individual responses from the JSON file.
 2. **Identify Key Themes**: Examine the feedback for repetitive comments or common themes to determine the overall sentiment.
-3. **Consensus Summary**: Summarize the general consensus in a brief sentence or paragraph.
+3. **Consensus Summary**: Summarize the general consensus in a paragraph.
 4. **Actionable Insights**: Identify and list three clear, actionable insights derived from the feedback to improve the product. Ensure each insight is supported by the feedback data.
 
 # Output Format
 
-- A brief text summarizing the general consensus.
-- A list of three actionable insights.
+- A couple of lines of text summarizing the general consensus.
+- A list of three to five actionable insights.
 
 # Examples
 
 **Input:**
-```json
+\`\`\`json
 [
     {"response": "I like the product, but the battery life is too short."},
     {"response": "Great design, but the battery needs improvement."},
     {"response": "The design is sleek, but I wish the battery lasted longer."}
 ]
-```
+\`\`\`
 
 **Output:**
 The general consensus is that while the design is appreciated, the product's battery life is a major concern.
@@ -34,3 +35,5 @@ The general consensus is that while the design is appreciated, the product's bat
 
 - Ensure the insights are directly actionable and relevant to product improvement.
 - Maintain objectivity and avoid drawing unsupported conclusions based only on a couple of responses.
+- use markup
+`;
