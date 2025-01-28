@@ -7,50 +7,30 @@ Analyze JSON files containing individual survey responses about a product. Summa
 
 # Steps
 
-1. **Parse the JSON File**: Extract individual responses from the JSON file.
-2. **Identify Key Themes**: Examine the feedback for repetitive comments or common themes to determine the overall sentiment.
-3. **Consensus Summary**: Summarize the general consensus in a paragraph.
-4. **Actionable Insights**: Identify and list three clear, actionable insights derived from the feedback to improve the product. Ensure each insight is supported by the feedback data.
+1. **Identify Key Themes**: Examine the feedback for repetitive comments or common themes to determine the overall sentiment.
+2. **Consensus Summary**: Summarize the general consensus in a paragraph.
+3. **Actionable Insights**: Identify and list three clear, actionable insights derived from the feedback to improve the product. Ensure each insight is supported by the feedback data.
 
 # Output Format
 
 - A couple of lines of text summarizing the general consensus.
 - A list of three to five actionable insights.
 
-# Examples
-
-**Input:**
-\`\`\`json
-[
-    {"response": "I like the product, but the battery life is too short."},
-    {"response": "Great design, but the battery needs improvement."},
-    {"response": "The design is sleek, but I wish the battery lasted longer."}
-]
-\`\`\`
-
-**Output:**
-The general consensus is that while the design is appreciated, the product's battery life is a major concern.
-
-1. Improve battery life to enhance user satisfaction.
-2. Conduct a battery usage optimization study.
-3. Consider user feedback in future design iterations.
-
 # Notes
 
 - Ensure the insights are directly actionable and relevant to product improvement.
 - Maintain objectivity and avoid drawing unsupported conclusions based only on a couple of responses.
-- use markup
+- Wrap text in * for bold, ** for italic and # for subtitles
+- omit any information from the output that could identify a person such as their email or name
 `;
 
 // A basic Markdown parser function
 function parseMarkdown(text) {
   // Convert Markdown to HTML:
-  text = text.replace(/(\*\*|__)(.*?)\1/g, "<strong>$2</strong>"); // Bold
-  text = text.replace(/(\*|_)(.*?)\1/g, "<em>$2</em>"); // Italics
-  text = text.replace(/^### (.*?)$/gm, "<h3>$1</h3>"); // H3
-  text = text.replace(/^## (.*?)$/gm, "<h2>$1</h2>"); // H2
-  text = text.replace(/^# (.*?)$/gm, "<h1>$1</h1>"); // H1
-  text = text.replace(/\n/g, "<br>"); // Line breaks
+  text = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>"); // Bold
+  text = text.replace(/\*(.*?)\*/g, "<em>$1</em>"); // Italics
+  text = text.replace(/^# (.*?)$/gm, "<h3>$1</h3>"); // Heading (h2)
+  text = text.replace(/\n/g, "<br>"); // Line break
   return text;
 }
 
@@ -78,6 +58,7 @@ submitButton.addEventListener("click", async () => {
           },
           body: JSON.stringify({
             model: "gpt-4",
+            temperature: 0.8,
             messages: [
               { role: "user", content: fileContent },
               { role: "system", content: systemMessage },
