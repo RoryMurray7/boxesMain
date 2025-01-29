@@ -54,7 +54,7 @@ submitButton.addEventListener("click", async () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${API_KEY}`, // Replace with your API key
+            Authorization: `Bearer ${API_KEY}`, // Replace this with your API key
           },
           body: JSON.stringify({
             model: "gpt-4",
