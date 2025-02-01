@@ -15,11 +15,11 @@
             font-family: Arial, sans-serif;
             display: flex;
             min-height: 100vh;
-            background-color: #baacff2a;
+            background-color: #f9faf5;
         }
 
         .sidebar {
-            background-color: #baacff40;
+            background-color: #f9faf5;
             width: 100px;
             padding: 20px;
             min-height: 100vh;
@@ -34,7 +34,6 @@
         }
 
         .header {
-            background-color: #baacff2d;
             padding: 20px;
             height: 150px;
             display: flex;
@@ -44,7 +43,7 @@
         .content { /*This contains everything except the sidebar and header*/
             display: flex;
             padding: 20px;
-            gap: 20px;
+            gap: 40px;
             flex: 1;
         }
 
@@ -52,7 +51,7 @@
             flex: 2;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 40px;
         }
 
         .right-section {
@@ -63,7 +62,7 @@
             background-color: white;
             border-radius: 40px;
             padding: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.01);
         }
 
         .summaryBox {
@@ -78,8 +77,8 @@
 
         .small-boxes {
             display: flex;
-            gap: 20px;
-            height: 150px;
+            gap: 40px;
+            height: 200px;
         }
 
         .small-box {
@@ -92,10 +91,37 @@
             flex-direction: column;
         }
 
+        .small1 {
+            border-style: solid;
+            border-color: #b2b0b6;
+            border-width: 2px;
+            background-color: #f9faf5;
+            border-blu
+        }
+
+        .small2 {
+            background-color: #222718;
+            color: #d5d5d5;
+        }
+
         .logo {
             width: 100px;
         }
+
+        h1 {
+            font-family: "Montserrat", serif;
+            font-size: 40px;
+            font-weight: 500;
+        }
+
+        h2 {
+            font-family: "Montserrat", serif;
+            font-size: 30px;
+            font-weight: 500;
+        }
+
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <aside class="sidebar">
@@ -106,7 +132,7 @@
 
     <div class="main-container">
         <header class="header">
-            <h1 style="font-size: 50px;">Dashboard</h1> 
+            <h1 style="font-size: 50px; font-weight: 600;">Dashboard</h1> 
             <button id="buttonN">Reload</button>
         </header>
 
@@ -119,9 +145,9 @@
                 </div>
 
                 <div class="small-boxes">
-                    <div class="box small-box"><h1>Total responses</h1></div>
-                    <div class="box small-box"><h1>Average Product Rating</h1></div>
-                    <div class="box small-box"><h1></h1></div>
+                    <div class="box small-box small1"><h2>Total Number of<br>Responses</h2></div>
+                    <div class="box small-box small2"><h2>Average<br>Rating</h2></div>
+                    <div class="box small-box"><h2>Current Age<br>Demographic</h2></div>
                 </div>
 
                 <div class="box graphBox">
