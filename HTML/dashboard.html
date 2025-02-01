@@ -12,19 +12,33 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
             display: flex;
             min-height: 100vh;
+            background-color: #b1a1ffa1;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .entireWebsite {
+            display: flex;
+            align-items: center;
             background-color: #f9faf5;
+            width: 1920px;
+            height: 1080px;
+            border-style: solid;
+            border-radius: 40px;
+            border-width: 2px;
+            border-color: #b2b0b6;
         }
 
         .sidebar {
             background-color: #f9faf5;
             width: 100px;
-            padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
+            padding: 25px;
+            flex-direction: column;
+            height: 100%;
+            border-radius: 50px;
+            
         }
 
         .main-container { /*This contains everything except the sidebar*/
@@ -35,7 +49,7 @@
 
         .header {
             padding: 20px;
-            height: 150px;
+            height: 100px;
             display: flex;
             align-items: center;
         }
@@ -43,6 +57,7 @@
         .content { /*This contains everything except the sidebar and header*/
             display: flex;
             padding: 20px;
+            padding-top: 0px;
             gap: 40px;
             flex: 1;
         }
@@ -61,12 +76,12 @@
         .box { /*Every box*/
             background-color: white;
             border-radius: 40px;
-            padding: 20px;
+            padding: 25px;
             box-shadow: 0 8px 8px rgba(0, 0, 0, 0.01);
         }
 
         .summaryBox {
-            height: 400px;
+            height: 350px;
             display: flex;
             flex-direction: column;
         }
@@ -86,7 +101,7 @@
         }
 
         .insightBox {
-            height: calc(500px + 150px + 400px + 40px); /* Sum of all boxes + gaps */
+            height: 930px;
             display: flex;
             flex-direction: column;
         }
@@ -96,12 +111,24 @@
             border-color: #b2b0b6;
             border-width: 2px;
             background-color: #f9faf5;
-            border-blu
         }
 
         .small2 {
             background-color: #222718;
             color: #d5d5d5;
+        }
+
+        .homeButton {
+            border-style: solid;
+            border-color: #b2b0b6;
+            border-width: 2px;
+            border-radius: 100%;
+            height: 75px;
+            width: 75px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #b2b0b680;
         }
 
         .logo {
@@ -110,59 +137,57 @@
 
         h1 {
             font-family: "Montserrat", serif;
-            font-size: 40px;
-            font-weight: 500;
-        }
-
-        h2 {
-            font-family: "Montserrat", serif;
-            font-size: 30px;
-            font-weight: 500;
+            font-size: 25px;
+            font-weight: 600;
         }
 
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <aside class="sidebar">
-        <a href="./index.html">
-            <img src="../Assets/IMG_0755.png" class="logo" />
-        </a>
-    </aside>
-
-    <div class="main-container">
-        <header class="header">
-            <h1 style="font-size: 50px; font-weight: 600;">Dashboard</h1> 
-            <button id="buttonN">Reload</button>
-        </header>
-
-        <main class="content">
-            <section class="left-section">
-
-                <div class="box summaryBox">
-                    <h1>Summary</h1>
-                    <div id="summaryResponse" style="padding: 15px; margin-top: 20px; border-radius: 35px; background-color: #f9f9f9;  flex-grow: 1;">Response will appear here..</div>
-                </div>
-
-                <div class="small-boxes">
-                    <div class="box small-box small1"><h2>Total Number of<br>Responses</h2></div>
-                    <div class="box small-box small2"><h2>Average<br>Rating</h2></div>
-                    <div class="box small-box"><h2>Current Age<br>Demographic</h2></div>
-                </div>
-
-                <div class="box graphBox">
-                    <h1></h1>
-                </div>
-
-            </section>
-
-            <section class="right-section">
-                <div class="box insightBox">
-                    <h1>Actionable Insights</h1>
-                    <div id="insightResponse" style="padding: 15px; margin-top: 20px; border-radius: 35px; background-color: #f9f9f9;  flex-grow: 1;"></div>
-                </div>
-            </section>
-        </main>
+    <div class="entireWebsite">
+        <aside class="sidebar">
+            <div class=homeButton>
+                <a href="./index.html">
+                    <img src="../Assets/IMG_0755.png" class="logo" />
+                </a>
+            </div>
+        </aside>
+    
+        <div class="main-container">
+            <header class="header">
+                <h1 style="font-size: 50px; font-weight: 600;">Dashboard</h1> 
+                <button id="buttonN" style="margin-left: 50px;">pls ignore me!</button>
+            </header>
+    
+            <main class="content">
+                <section class="left-section">
+    
+                    <div class="box summaryBox">
+                        <h1>Summary</h1>
+                        <div id="summaryResponse" style="padding: 15px; margin-top: 20px; border-radius: 35px; background-color: #f9f9f9;  flex-grow: 1;">Response will appear here..</div>
+                    </div>
+    
+                    <div class="small-boxes">
+                        <div class="box small-box small1"><h1>Total Number of<br>Responses</h1></div>
+                        <div class="box small-box small2"><h1>Average<br>Rating</h1></div>
+                        <div class="box small-box"><h1>Current Age<br>Demographic</h1></div>
+                    </div>
+    
+                    <div class="box graphBox">
+                        <h1></h1>
+                    </div>
+    
+                </section>
+    
+                <section class="right-section">
+                    <div class="box insightBox">
+                        <h1>Actionable Insights</h1>
+                        <div id="insightResponse" style="padding: 15px; margin-top: 20px; border-radius: 35px; background-color: #f9f9f9;  flex-grow: 1;"></div>
+                    </div>
+                </section>
+            </main>
+        </div>
     </div>
 
     <script src="../config.js"></script>
