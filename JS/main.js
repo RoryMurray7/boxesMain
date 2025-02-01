@@ -24,6 +24,54 @@ Analyze JSON files containing individual survey responses about a product. Summa
 - omit any information from the output that could identify a person such as their email or name
 `;
 
+// document.addEventListener("DOMContentLoaded", () => {
+//   const form = document.getElementById("myForm");
+//   const fileSubmitButton = document.getElementById("submit");
+//   const responseBox = document.getElementById("responseBox");
+
+//   // If we're on the first page, handle form submission
+//   if (form) {
+//     form.addEventListener("submit", function (event) {
+//       event.preventDefault(); // Prevent form from submitting normally
+
+//       // Get values from form inputs
+//       const companyName = document.getElementById("companyName").value;
+//       const productService =
+//         document.getElementsByName("productService")[0].value;
+//       const targetDemographics =
+//         document.getElementById("targetDemographics").value;
+
+//       // Store values in localStorage
+//       localStorage.setItem("companyName", companyName);
+//       localStorage.setItem("productService", productService);
+//       localStorage.setItem("targetDemographics", targetDemographics);
+
+//       // Redirect to second page
+//       window.location.href = "../HTML/fileupload.html";
+//     });
+//   }
+
+//   // If we're on the second page, retrieve values and update responseBox
+//   if (fileSubmitButton && responseBox) {
+//     fileSubmitButton.addEventListener("click", () => {
+//       // Retrieve values from localStorage
+//       const companyName =
+//         localStorage.getItem("companyName") || "No Company Name";
+//       const productService =
+//         localStorage.getItem("productService") || "No Product/Service";
+//       const targetDemographics =
+//         localStorage.getItem("targetDemographics") || "No Target Demographics";
+
+//       // Display retrieved values in responseBox
+//       responseBox.innerHTML = `
+//         <strong>Company Name:</strong> ${companyName} <br>
+//         <strong>Product / Service:</strong> ${productService} <br>
+//         <strong>Target Demographics:</strong> ${targetDemographics}
+//       `;
+//     });
+//   }
+// });
+
 // A basic Markdown parser function
 function parseMarkdown(text) {
   // Convert Markdown to HTML:
@@ -54,10 +102,10 @@ submitButton.addEventListener("click", async () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${API_KEY}`, // Replace this with your API key
+            Authorization: `Bearer ${API_KEY}`,
           },
           body: JSON.stringify({
-            model: "gpt-4",
+            model: "gpt-4o",
             temperature: 0.8,
             messages: [
               { role: "user", content: fileContent },
