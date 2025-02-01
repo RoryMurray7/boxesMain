@@ -1,7 +1,6 @@
 const summaryBox = document.getElementById("summaryResponse");
 const reloadButton = document.getElementById("buttonN");
 const fileContent = "Hello, Who are you";
-const systemMessage = "You are a helpful assistant";
 // Function to call OpenAI API
 async function getGPTResponse() {
   try {
@@ -19,7 +18,7 @@ async function getGPTResponse() {
         max_tokens: 5000,
         temperature: 0.7,
         messages: [
-          { role: "user", content: fileContent },
+          { role: "user", content: sampleSurveyData },
           { role: "system", content: systemMessage },
         ],
       }),
@@ -47,4 +46,4 @@ async function getGPTResponse() {
 reloadButton.addEventListener("click", getGPTResponse);
 
 // Initial load
-document.addEventListener("DOMContentLoaded", getGPTResponse);
+//document.addEventListener("DOMContentLoaded", getGPTResponse);
