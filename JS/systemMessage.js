@@ -9,11 +9,18 @@ Analyze individual survey responses about a product in JSON format.
 4. **Actionable Insights**: Identify and list three clear, actionable insights derived from the feedback to improve the product. Ensure each insight is supported by the feedback data.
 
 # Output Format
-Provide the output as a JSON object with the following structure:
-- general_sentiment: a string summarizing the overall sentiment.
-- average_score: a number representing the average score of the feedback.
-- total_responses: an integer indicating the total number of responses.
-- actionable_insights: an array of 3-5 strings, each detailing a specific actionable insight.
+{
+  summary:
+    "The overall sentiment regarding the product is positive, with users appreciating its sleek design, performance, and portability. However, there are consistent concerns about overheating, limited port selection, and noise from cooling systems during intensive use.",
+  total_responses: 10,
+  average_rating: 3.7,
+  average_age: "18-25",
+  actionable_insights: [
+    "Enhance the cooling system to address overheating issues and reduce noise during intensive tasks, as multiple users reported the device heating up and being noisy.",
+    "Expand the port selection to accommodate more peripherals, as several users found the current selection limited.",
+    "Improve the device's performance when running multiple applications simultaneously, as some users experienced lag and underperformance during such tasks.",
+  ],
+};
 
 # Notes
 

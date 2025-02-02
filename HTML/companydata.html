@@ -3,9 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Company Data</title>
     <link href="../CSS/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+    .formContainer {
+        font-family: "Montserrat", serif;
+      max-width: 400px;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .text-input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 40px;
+      font-size: 14px;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .age-selector {
+      position: relative;
+      display: flex;
+      background: #f0f0f0;
+      border-radius: 40px;
+      padding: 4px;
+      margin-top: 8px;
+      width: 100%;
+    }
+
+    .age-option {
+      flex: 1;
+      padding: 8px;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.3s;
+    }
+
+    .slider {
+      position: absolute;
+      left: 0;
+      top: 4px;
+      bottom: 4px;
+      width: calc((100% / 3) - 8px);
+      margin: 0 4px;
+      background: white;
+      border-radius: 2px;
+      transition: left 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border-radius: 40px;
+    }
+
+    .age-option.selected {
+      color: #333;
+    }
+    </style>
 </head>
 <body>
     <div class="entireWebsite">
@@ -36,18 +104,44 @@
             </header>
     
             <main class="content">
-                <section class="left-section" style="background-color: #222718; height: fit-content;">
+                <section class="left-section" style="height: fit-content;">
     
                     <div class="box basicInformation">
                         <h1>Basic Information</h1>
+                        <div class="formContainer">
+                            <div class="form-group">
+                              <label for="company-name">Company name:</label>
+                              <input type="text" id="company-name" class="text-input">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="company-name">Product / Service:</label>
+                                <input type="text" id="product" class="text-input">
+                              </div>
+                        
+                            <div class="form-group">
+                              <label>Target age demographic:</label>
+                              <div class="age-selector">
+                                <div class="slider"></div>
+                                <div class="age-option" data-age="under-18">Under 18</div>
+                                <div class="age-option" data-age="18-25">18-25</div>
+                                <div class="age-option" data-age="25-45">25-45</div>
+                              </div>
+                            </div>
+                        </div>
                     </div>
 
                 </section>
     
-                <section class="right-section" style="background-color: #222718; height: fit-content;">
+                <section class="right-section" style="height: fit-content;">
 
                     <div class="box fileUpload">
                         <h1>File Upload</h1>
+                        <label for="fileInput" class="box fileUploadButton">
+                            Upload a file
+                        </label>
+                        <input class="fileInput" type="file" id="fileInput" accept=".txt" />
+                        <span class = "fileName" id="fileName">No file chosen</span>
                     </div>
 
                 </section>
@@ -59,7 +153,60 @@
             </div>
         </div>
     </div>
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const fileNameDisplay = document.getElementById('fileName');
 
+        fileInput.addEventListener('change', function() {
+            if (fileInput.files.length > 0) {
+            fileNameDisplay.textContent = fileInput.files[0].name;
+            } else {
+            fileNameDisplay.textContent = 'No file chosen';
+            }
+        });
+    </script>
+  <script>
+        // Form data storage
+        let formData = {
+        companyName: '',
+        targetAge: ''
+        };
+
+        // Company name input handler
+        const companyInput = document.getElementById('company-name');
+        companyInput.addEventListener('input', (e) => {
+        formData.companyName = e.target.value;
+        console.log('Updated company name:', formData.companyName);
+        });
+
+        // Age selector functionality
+        const ageSelector = document.querySelector('.age-selector');
+        const slider = document.querySelector('.slider');
+        const ageOptions = document.querySelectorAll('.age-option');
+
+        ageOptions.forEach((option, index) => {
+        option.addEventListener('click', () => {
+            // Update slider position
+            slider.style.left = `${index * (100 / 3)}%`;
+            
+            // Remove selected class from all options
+            ageOptions.forEach(opt => opt.classList.remove('selected'));
+            
+            // Add selected class to clicked option
+            option.classList.add('selected');
+            
+            // Update form data
+            formData.targetAge = option.dataset.age;
+            console.log('Updated target age:', formData.targetAge);
+        });
+        });
+
+        // Function to get form data
+        function getFormData() {
+        return formData;
+        }
+  </script>
+    </script>
     <script src="../config.js"></script>
     <script src = "../JS/systemMessage.js"></script>
     <script src="../sampleSurveyResponses.js"></script>

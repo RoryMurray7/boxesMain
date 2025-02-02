@@ -1,5 +1,3 @@
-const summaryBox = document.getElementById("summaryResponse");
-
 const apiResponse = {
   summary:
     "The overall sentiment regarding the product is positive, with users appreciating its sleek design, performance, and portability. However, there are consistent concerns about overheating, limited port selection, and noise from cooling systems during intensive use.",
@@ -29,20 +27,20 @@ function displayApiResponse(response) {
   });
 }
 
-// Example usage
+// runs for testing
 document.addEventListener("DOMContentLoaded", function () {
   displayApiResponse(apiResponse);
 });
 
 async function getGPTResponse() {
   try {
-    summaryBox.textContent = "Loading...";
+    summary.textContent = "Loading...";
 
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${API_KE}`,
+        Authorization: `Bearer ${API_KEY}`,
       },
       body: JSON.stringify({
         model: "gpt-4o",
@@ -59,17 +57,13 @@ async function getGPTResponse() {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const data = await response.json();
-
-    // Display the response
-    if (data.choices && data.choices[0]) {
-      summaryBox.textContent = data.choices[0].message.content;
-    } else {
-      throw new Error("No response content received");
-    }
+    // Pass the response data to the display function
+    displayApiResponse(response);
   } catch (error) {
     console.error("Error:", error);
-    summaryBox.textContent = "Error fetching response. Please try again.";
+    summary.textContent = "Error fetching response. Please try again.";
+    actionable_insights.textContent =
+      "Error fetching response. Please try again.";
   }
 }
 
