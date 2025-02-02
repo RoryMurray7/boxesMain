@@ -38,6 +38,8 @@
             flex-direction: column;
             height: 100%;
             border-radius: 50px;
+            display: flex;
+            align-items: center;
             
         }
 
@@ -118,6 +120,29 @@
             color: #d5d5d5;
         }
 
+        .returnBoxSmall {
+            padding: 20px;
+            margin-top: 10px;
+            border-radius: 35px;
+            background-color: #f9f9f9;
+            flex-grow: 1;
+            text-align: center;
+            font-family: "Montserrat", serif;
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        .returnBox {
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 35px;
+            background-color: #f9f9f9;
+            flex-grow: 1;
+            font-family: "Montserrat", serif;
+            font-size: 20px;
+            font-weight: 400;
+        }
+
         .homeButton {
             border-style: solid;
             border-color: #b2b0b6;
@@ -131,8 +156,25 @@
             background-color: #b2b0b680;
         }
 
+        .bars {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+        }
+
         .logo {
             width: 100px;
+        }
+
+        .reload {
+            width: 30px;
+            margin-left: auto;
+            margin-right: 30px;
+        }
+
+        .barsImage {
+            width: 30px;
         }
 
         h1 {
@@ -140,6 +182,11 @@
             font-size: 25px;
             font-weight: 600;
         }
+
+        li {
+            margin-bottom: 10px;
+        }
+
 
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -152,12 +199,16 @@
                     <img src="../Assets/IMG_0755.png" class="logo" />
                 </a>
             </div>
+
+            <div class=bars>
+                <img src="../Assets/bars.png" class="barsImage" />
+            </div>
         </aside>
     
         <div class="main-container">
             <header class="header">
-                <h1 style="font-size: 50px; font-weight: 600;">Dashboard</h1> 
-                <button id="buttonN" style="margin-left: 50px;">pls ignore me!</button>
+                <h1 style="font-size: 50px; font-weight: 600;">Dashboard</h1>
+                <img class="reload" src="../Assets/refresh.png" onclick="getGPTResponse()" onclick="displayApiResponse(apiResponse)" />
             </header>
     
             <main class="content">
@@ -165,13 +216,22 @@
     
                     <div class="box summaryBox">
                         <h1>Summary</h1>
-                        <div id="summaryResponse" style="padding: 15px; margin-top: 20px; border-radius: 35px; background-color: #f9f9f9;  flex-grow: 1;">Response will appear here..</div>
+                        <div class=returnBox id="summary"></div>
                     </div>
     
                     <div class="small-boxes">
-                        <div class="box small-box small1"><h1>Total Number of<br>Responses</h1></div>
-                        <div class="box small-box small2"><h1>Average<br>Rating</h1></div>
-                        <div class="box small-box"><h1>Current Age<br>Demographic</h1></div>
+                        <div class="box small-box small1">
+                            <h1>Total Number of<br>Responses</h1>
+                            <div class=returnBoxSmall id="total_responses" style="background-color: #b2b0b61a;"></div>
+                        </div>
+                        <div class="box small-box small2">
+                            <h1>Average<br>Rating</h1>
+                            <div class=returnBoxSmall id="average_rating" style="background-color: #222718;"></div>
+                        </div>
+                        <div class="box small-box">
+                            <h1>Current Age<br>Demographic</h1>
+                            <div class=returnBoxSmall id="average_age"></div>
+                        </div>
                     </div>
     
                     <div class="box graphBox">
@@ -183,7 +243,7 @@
                 <section class="right-section">
                     <div class="box insightBox">
                         <h1>Actionable Insights</h1>
-                        <div id="insightResponse" style="padding: 15px; margin-top: 20px; border-radius: 35px; background-color: #f9f9f9;  flex-grow: 1;"></div>
+                        <div class=returnBox id="actionable_insights"></div>
                     </div>
                 </section>
             </main>
