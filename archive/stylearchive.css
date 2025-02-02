@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 75;
+    margin: auto;
+    padding: 20px;
+    background-image: url(../Assets/abstract-marble-texture-black-white-grey-background-handmade-technique.jpg);
+}
+
+.logo {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 150px;
+}
+
+button {
+    background-color: #46403b;
+    color: white;
+}
+button:hover {
+    background-color: #25241e;
+}
