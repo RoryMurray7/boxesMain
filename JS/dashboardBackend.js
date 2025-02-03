@@ -107,6 +107,10 @@ Analyze JSON files containing individual survey responses about a product. Provi
 - Wrap text in * for bold, ** for italic and # for subtitles
 `;
 
+document.addEventListener("DOMContentLoaded", function () {
+  fetchCurrentAgeDemographic();
+});
+
 async function fetchSummary() {
   const summaryElement = document.getElementById("summary");
   summaryElement.innerText = "Loading...";
