@@ -9,7 +9,7 @@
     <style>
     .formContainer {
         font-family: "Montserrat", serif;
-      max-width: 400px;
+      max-width: 600px;
       padding: 20px;
       font-family: Arial, sans-serif;
     }
@@ -54,6 +54,7 @@
       position: relative;
       z-index: 2;
       transition: color 0.3s;
+      font-size: 15px;
     }
 
     .slider {
@@ -61,7 +62,7 @@
       left: 0;
       top: 4px;
       bottom: 4px;
-      width: calc((100% / 3) - 8px);
+      width: calc((100% / 5) - 8px);
       margin: 0 4px;
       background: white;
       border-radius: 2px;
@@ -124,8 +125,10 @@
                               <div class="age-selector">
                                 <div class="slider"></div>
                                 <div class="age-option" data-age="under-18">Under 18</div>
-                                <div class="age-option" data-age="18-25">18-25</div>
-                                <div class="age-option" data-age="25-45">25-45</div>
+                                <div class="age-option" data-age="18-24">18-24</div>
+                                <div class="age-option" data-age="25-34">25-34</div>
+                                <div class="age-option" data-age="35-44">35-44</div>
+                                <div class="age-option" data-age="45-and-above">45 And Above</div>
                               </div>
                             </div>
                         </div>
@@ -140,7 +143,7 @@
                         <label for="fileInput" class="box fileUploadButton">
                             Upload a file
                         </label>
-                        <input class="fileInput" type="file" id="fileInput" accept=".txt" />
+                        <input class="fileInput" type="file" id="fileInput" accept=".txt, .json"/>
                         <span class = "fileName" id="fileName">No file chosen</span>
                     </div>
 
@@ -166,20 +169,7 @@
         });
     </script>
   <script>
-        // Form data storage
-        let formData = {
-        companyName: '',
-        targetAge: ''
-        };
-
-        // Company name input handler
-        const companyInput = document.getElementById('company-name');
-        companyInput.addEventListener('input', (e) => {
-        formData.companyName = e.target.value;
-        console.log('Updated company name:', formData.companyName);
-        });
-
-        // Age selector functionality
+        // Age selector functionality (this is from claude)
         const ageSelector = document.querySelector('.age-selector');
         const slider = document.querySelector('.slider');
         const ageOptions = document.querySelectorAll('.age-option');
@@ -187,7 +177,7 @@
         ageOptions.forEach((option, index) => {
         option.addEventListener('click', () => {
             // Update slider position
-            slider.style.left = `${index * (100 / 3)}%`;
+            slider.style.left = `${index * (100 / 5)}%`;
             
             // Remove selected class from all options
             ageOptions.forEach(opt => opt.classList.remove('selected'));
@@ -200,17 +190,9 @@
             console.log('Updated target age:', formData.targetAge);
         });
         });
-
-        // Function to get form data
-        function getFormData() {
-        return formData;
-        }
   </script>
     </script>
-    <script src="../config.js"></script>
-    <script src = "../JS/systemMessage.js"></script>
-    <script src="../sampleSurveyResponses.js"></script>
+    <script src="../JS/fileupload.js"></script>
     <script src="../JS/dashboardBackend.js"></script>
-
 </body>
 </html>
