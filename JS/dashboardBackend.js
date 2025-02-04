@@ -81,7 +81,7 @@ Analyze JSON files containing individual survey responses about a product. Summa
 2. **Consensus Summary**: Summarize the general consensus in a paragraph.
 
 # Output Format
-- A couple of lines of text summarizing the general consensus.
+- A couple of lines of text summarizing the general consensus. No more than 400 characters.
 
 # Notes
 - Maintain objectivity and avoid drawing unsupported conclusions based only on a couple of responses.
@@ -97,7 +97,7 @@ Analyze JSON files containing individual survey responses about a product. Provi
 3. **Actionable Insights**: Identify and list three clear, actionable insights derived from the feedback to improve the product. Ensure each insight is supported by the feedback data.
 
 # Output Format
-- A list of three actionable insights without any additional titles or headings.
+- A list of three actionable insights without any additional titles or headings. No more than 600 characters.
 
 # Notes
 
